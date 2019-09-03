@@ -17,6 +17,6 @@
   @endcomponent
 
 </body>
-@component("layouts.head")
+@component("layouts.script")
 @endcomponent
 </html>

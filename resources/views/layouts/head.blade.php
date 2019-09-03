@@ -1,8 +1,8 @@
 <meta charset="utf-8" />
     <title>UniBlog</title>
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon" />
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
+<link href="{{asset('blog/img/favicon.png')}}" rel="icon" />
+    <link href="{{asset('blog/img/apple-touch-icon.png')}}" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
     <link
@@ -11,13 +11,13 @@
     />
 
     <!-- Bootstrap CSS File -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{asset('blog/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
 
     <!-- Libraries CSS Files -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
-    <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <link href="{{asset('blog/lib/animate/animate.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('blog/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('blog/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('blog/lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet" />
 
     <!-- Main Stylesheet File -->
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="{{asset('blog/css/style.css')}}" rel="stylesheet" />
