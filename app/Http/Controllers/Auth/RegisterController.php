@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'photo' => ['required', 'image']
         ]);
     }
 
@@ -63,10 +64,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+
+
+        
+        if($request->hasFile('photo')){
+
+            $dir = 'uploads/profile_images/';
+
+            $profileImage = $request->file('photo');
+            $profileImageSaveAsName = time() . "-profile." . $profileImage->getClientOriginalExtension();
+            $profile_image_url = $dir . $profileImageSaveAsName;
+            $profileImage->move($dir, $profileImageSaveAsName);
+        }
+        
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'photo' => $profile_image_url
         ]);
     }
 }

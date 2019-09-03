@@ -17,7 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/**************************************
+ * 
+ * 
+ * Rotas do Site
+ * 
+ ***************************************/
+
 Route::get('index', function () {
     return view('index');
 });
@@ -25,6 +31,16 @@ Route::get('curso', function () {
     return view('curso');
 });
 
-Route::get('/painel/posts', function () {
-    return view('painel.posts.posts');
+
+/**************************************
+ * 
+ * 
+ * Rotas do Painel
+ * 
+ *************************************/
+Route::group(['prefix'=>'painel'], function(){
+
+    Route::get('/posts', 'PostsController@index')->middleware('auth');
+
+
 });
