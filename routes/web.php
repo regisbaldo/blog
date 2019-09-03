@@ -24,3 +24,7 @@ Route::get('index', function () {
 Route::get('curso', function () {
     return view('curso');
 });
+
+Route::get('/painel/posts', function () {
+    return view('painel.posts.posts');
+});
