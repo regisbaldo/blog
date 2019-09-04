@@ -40,7 +40,9 @@ Route::get('curso', function () {
  *************************************/
 Route::group(['prefix'=>'painel'], function(){
 
+    Route::get('/', 'PainelController@index');
     Route::get('/posts', 'PostsController@index')->middleware('auth');
-
+    Route::get('/posts/create', 'PostsController@create')->middleware('auth');
+    Route::post('/posts/store', 'PostsController@store')->middleware('auth');
 
 });
