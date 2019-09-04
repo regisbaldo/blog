@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
@@ -24,13 +21,12 @@ Auth::routes();
  * 
  ***************************************/
 
-Route::get('index', function () {
-    return view('index');
-});
+
 Route::get('curso', function () {
     return view('curso');
 });
 
+Route::get('/', 'IndexController@index');
 
 /**************************************
  * 
@@ -44,5 +40,7 @@ Route::group(['prefix'=>'painel'], function(){
     Route::get('/posts', 'PostsController@index')->middleware('auth');
     Route::get('/posts/create', 'PostsController@create')->middleware('auth');
     Route::post('/posts/store', 'PostsController@store')->middleware('auth');
+    Route::get('/posts/edit/{id}', 'PostsController@edit')->middleware('auth');
+    Route::post('/posts/update/{id}', 'PostsController@update')->middleware('auth');
 
 });

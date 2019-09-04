@@ -58,7 +58,7 @@ class PostsController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect('/painel/posts');
+        return redirect('/painel/posts')->with('message', 'Cadastro adicionado com sucesso');
         
     }
 
@@ -81,7 +81,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $post = Post::find($id);
+
+        return view('painel.posts.edit_post')->with(['post' => $post]);
+        
     }
 
     /**
@@ -93,7 +97,27 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    
+        $post = Post::find($id);
+
+        if($request->hasFile('photo')){
+
+            $dir = 'uploads/profile_images/';
+
+            $profileImage = $request->file('photo');
+            $profileImageSaveAsName = time() . "-profile." . $profileImage->getClientOriginalExtension();
+            $profile_image_url = $dir . $profileImageSaveAsName;
+            $profileImage->move($dir, $profileImageSaveAsName);
+        }
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->photo = $profile_image_url;
+
+        $post->save();
+
+        return redirect('/painel/posts')->with('message', 'Cadastro Atualizado com sucesso');
+
     }
 
     /**
